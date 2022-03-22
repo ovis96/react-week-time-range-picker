@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { TbodyProps, SelectedDataProps } from '../../interface'
 import { theadWithHalfHours, theadWithHours } from '../../config/thead.js'
 import { weeks } from '../../config/tbody.js'
 import { sort, sortHour, handleRange, handleDayRange, handleCheckedData } from '../../util/index'
 import "../less/time-range-picker-tbody.less"
 import WeekTimeRangeSelected from './weekTimeRangeSelected'
+import { TbodyProps, SelectedDataProps } from '../ReactWeekTimeRangePicker/ReactWeekTimeRangePicker.type.js'
 
 let hasStart = false // Determine whether the starting point is in cacheChecked when mousedown
 let isDrag = false
