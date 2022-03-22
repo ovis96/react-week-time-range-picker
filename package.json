@@ -11,17 +11,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lizhongzhen11/react-week-time-range-picker.git"
+    "url": "git+https://github.com/marinos33/react-week-time-range-picker.git"
   },
   "keywords": [
     "time-range-picker"
   ],
-  "author": "lizhongzhen11",
+  "author": "marinos33",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lizhongzhen11/react-week-time-range-picker/issues"
+    "url": "https://github.com/marinos33/react-week-time-range-picker/issues"
   },
-  "homepage": "https://github.com/lizhongzhen11/react-week-time-range-picker#readme",
+  "homepage": "https://github.com/marinos33/react-week-time-range-picker#readme",
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@types/node": "^12.7.8",

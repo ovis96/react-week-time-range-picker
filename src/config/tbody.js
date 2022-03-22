@@ -1,31 +1,31 @@
 export const weeks = [
   {
     iden: '0',
-    week: '星期一'
+    week: 'Monday'
   },
   {
     iden: '1',
-    week: '星期二'
+    week: 'Tuesday'
   },
   {
     iden: '2',
-    week: '星期三'
+    week: 'Wednesday'
   },
   {
     iden: '3',
-    week: '星期四'
+    week: 'Thursday'
   },
   {
     iden: '4',
-    week: '星期五'
+    week: 'Friday'
   },
   {
     iden: '5',
-    week: '星期六'
+    week: 'Saturday'
   },
   {
     iden: '6',
-    week: '星期日'
+    week: 'Sunday'
   }
 ]
 

@@ -2,8 +2,8 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  // entry: "./src/test.tsx", // 本地测试
-  entry: "./src/index.tsx", // 打包
+  // entry: "./src/test.tsx"
+  entry: "./src/index.tsx",
   output: {
     filename: "react-week-time-range-picker.js",
     path: path.resolve(__dirname),

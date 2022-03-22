@@ -4,14 +4,14 @@ import { allHours, allWithHalfHours } from '../config/thead'
  * 
  * @param {*} curr 
  * @param {*} next 
- * @description 普通排序，用于 星期一~日 排序
+ * @description Normal sorting, used for Monday~Sunday sorting
  */
 export const sort = (curr, next) => {
   return curr - next
 }
 
 /**
- * @description 对框选范围内的起止时间进行排序
+ * @description Sort the start and end times in the box selection range
  */
 export const sortHour = (curr, next) => {
   return curr.substring(0, 2) - next.substring(0, 2)
@@ -20,18 +20,18 @@ export const sortHour = (curr, next) => {
 /**
  * 
  * @param {*} hoursArr ["03:30", "06:30"]
- * @description 处理时间范围，将位于该时间范围内的所有时间段都放进数组中
- * 结果例如：["03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30"]
+ * @description Process the time range and put all time periods within the time range into an array
+ * The result is for example: ["03:30", "04:00", "04:30", "05:00", "05:30", "06:00", "06:30"]
  */
 export const handleRange = (hasHalfHour, hoursArr) => {
   let startIndex, endIndex
-  // 没有半小时
+  // no half hour 
   if (!hasHalfHour) {
     startIndex = allHours.indexOf(hoursArr[0])
     endIndex = allHours.indexOf(hoursArr[1])
     return allHours.slice(startIndex, endIndex + 1)
   }
-  // 有半小时
+  // half an hour
   startIndex = allWithHalfHours.indexOf(hoursArr[0])
   endIndex = allWithHalfHours.indexOf(hoursArr[1])
   return allWithHalfHours.slice(startIndex, endIndex + 1)
@@ -40,7 +40,7 @@ export const handleRange = (hasHalfHour, hoursArr) => {
 /**
  * 
  * @param {*} arr 
- * @description 处理日期范围
+ * @description Working with date ranges
  */
 export const handleDayRange = (arr) => {
   let temp = []
@@ -52,22 +52,22 @@ export const handleDayRange = (arr) => {
 
 /**
  * 
- * @description 处理框选范围内的数据，构造成我所需要的数据结构，同时需要去重等逻辑步骤
+ * @description Process the data within the frame selection range, construct the data structure I need, and need logical steps such as deduplication
  */
 export const handleCheckedData = ({cacheChecked, hasStart, has, idenIndex, iden, timeRange}) => {
-  let temp = { // 缓存数据，不要在循环中声明，否则会开辟多个内存空间
+  let temp = { // Cache data, don't declare it in the loop, otherwise it will open up multiple memory spaces
     iden: iden,
     times: []
   }
   let timeIndex = -1
-  // 开始框选，此时处于起点td框内，只需要判断该td(时间)所处的日期是否在已选数据中，不在的话加进去
+  // Start the frame selection. At this time, it is in the starting point td box. You only need to judge whether the date of the td (time) is in the selected data, and add it if it is not.
   if (!hasStart && !has) {
     cacheChecked.push(temp)
   }
   for (let i = 0; i < timeRange.length; i++) {
-    // 查找当前时间是否之前已经被选中过了；例如之前的点击、框选行为
+    // Find whether the current time has been selected before; such as previous click, box selection behavior
     timeIndex = !!has ? cacheChecked[idenIndex].times.indexOf(timeRange[i]) : -1
-    // 取消选中；对已选中的时间范围进行删减
+    // uncheck; prune the selected time range// 取消选中；对已选中的时间范围进行删减
     if (hasStart && has) {
       timeIndex >= 0 && cacheChecked[idenIndex].times.splice(timeIndex, 1)
       if (cacheChecked[idenIndex].times.length === 0) {
@@ -76,14 +76,14 @@ export const handleCheckedData = ({cacheChecked, hasStart, has, idenIndex, iden,
       }
       continue
     } 
-    // 框选时间范围
+    // frame selection time range
     if (!hasStart) {
-      // 已选中数据中已存在该星期，只是没有该时间
+      // The week already exists in the selected data, but the time is not available
       if (timeIndex === -1 && idenIndex >= 0) {
         cacheChecked[idenIndex].times.push(timeRange[i])
         continue
       }
-      // 已选中数据中没有该星期数据
+      // There is no data for this week in the selected data
       temp.times.push(timeRange[i])
     }
   }
