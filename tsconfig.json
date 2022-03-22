@@ -9,6 +9,7 @@
     "declarationDir": "types",
     "sourceMap": true,
     "outDir": "dist",
+    "noEmit": false,
     "moduleResolution": "node",
     "emitDeclarationOnly": true,
     "allowSyntheticDefaultImports": true,

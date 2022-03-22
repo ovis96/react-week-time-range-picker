@@ -40,23 +40,25 @@
     "@types/react": "^17.0.41",
     "@types/react-dom": "^17.0.14",
     "babel-loader": "^8.0.6",
-    "css-loader": "^6.7.1",
+    "css-loader": "^5.2.7",
     "html-webpack-plugin": "^5.5.0",
     "less": "^4.1.2",
-    "less-loader": "^10.2.0",
+    "less-loader": "^7.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rollup": "^2.70.1",
     "rollup-plugin-dts": "^4.2.0",
+    "rollup-plugin-less-modules": "^0.1.11",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-terser": "^7.0.2",
-    "style-loader": "^3.3.1",
-    "ts-loader": "^9.2.8",
+    "style-loader": "^2.0.0",
     "typescript": "^4.6.2"
   },
   "peerDeependencies": {
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "ts-loader": "^8.2.0"
+  }
 }

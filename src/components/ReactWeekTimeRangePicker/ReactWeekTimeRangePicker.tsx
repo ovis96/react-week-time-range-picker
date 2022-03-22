@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ReactWeekTimeRangePickerProps, SelectedDataProps, DragProps } from "./ReactWeekTimeRangePicker.type";
-import "./less/base.less"
-import "./less/index.less"
-import "./less/time-range-picker-common.less"
+import "../../less/base.less"
+import "../../less/index.less"
+import "../../less/time-range-picker-common.less"
 import WeekTimeRangePickerTbody from "../WeekTimeRange/weekTimeRangePickerTbody";
 import WeekTimeRangePickerThead from "../WeekTimeRange/weekTimeRangePickerThead";
 

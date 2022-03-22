@@ -1,19 +1,19 @@
 import React from 'react'
-import "../less/base.less"
-import "../less/time-range-picker-select.less"
-import { SelectedProps } from '../interface'
-import { weekMaps } from '../config/tbody.js'
+import "../../less/base.less"
+import "../../less/time-range-picker-select.less"
+import { weekMaps } from '../../config/tbody.js'
+import { SelectedProps } from '../ReactWeekTimeRangePicker/ReactWeekTimeRangePicker.type'
 
 /**
- * @desc 对被选中的日期排序，
- *       按iden排：星期一 ~ 星期日
- *       按time排：00:00~23:00
+ * @desc sort the selected dates,
+  * Sort by iden: Monday ~ Sunday
+  * Sort by time: 00:00~23:00 
  */
 const sort = (curr, next) => {
   if (curr.iden) {
     return curr.iden - next.iden
   }
-  // 对 00:00和00:30排序
+  // Sort 00:00 and 00:30
   if (curr.substring(0, 2) === next.substring(0, 2)) {
     return curr.substring(3) - next.substring(3)
   }
@@ -21,8 +21,8 @@ const sort = (curr, next) => {
 }
 
 /**
-   * @desc 合并times，将 [00:00, 01:00, 02:00]等不间隔的时间段合并
-   *       如果带半小时，那么就需要 [00:00, 00:30, 01:00] 才能合并成[00:00, 01:00]
+   * @desc Merge times, merge time periods without interval such as [00:00, 01:00, 02:00]
+    * If it takes half an hour, then it takes [00:00, 00:30, 01:00] to merge into [00:00, 01:00]
    */
 const handleMergeTimes = (hasHalfHour, times) => {
   let mergeTimes = [[times[0]]]
@@ -30,7 +30,7 @@ const handleMergeTimes = (hasHalfHour, times) => {
   return mergeTimes
 }
 
-// 只有小时的数据合并
+// Only hourly data merge
 const handleMergeHour = (times, mergeTimes) => {
   times.forEach(item => {
     const lastMergeArr = mergeTimes.slice(-1)[0]
@@ -44,12 +44,12 @@ const handleMergeHour = (times, mergeTimes) => {
   })
 }
 
-// 带半小时的数据合并
+// Data merge with half an hour
 const handleMergeHalfHour = (times, mergeTimes) => {
   times.forEach(item => {
     const lastMergeArr = mergeTimes.slice(-1)[0]
-    // 00:00-00:30 或者 00:30 - 01:00
-    // 小时*100 + 0或50，半小时转成50
+    // 00:00-00:30 or 00:30 - 01:00
+    // hour*100 + 0 or 50, half an hour becomes 50
     const lastMergeItem = lastMergeArr.slice(-1)[0]
     const itemNum = item.substring(0, 2) * 100 + (item.substring(3) === '30' ? 50 : 0)
     const lastMergeNum = lastMergeItem.substring(0, 2) * 100 + (lastMergeItem.substring(3) === '30' ? 50 : 0)
@@ -71,7 +71,7 @@ const handleMergeHalfHour = (times, mergeTimes) => {
   })
 }
 
-// 如果是只有小时的话，需要处理下
+// If it is only an hour, it needs to be dealt with
 const fromat = (last) => {
   const hour = ~~last.substring(0, 2) + 1
   return hour > 9 ? `${hour}:00` : `0${hour}:00`
@@ -80,14 +80,14 @@ const fromat = (last) => {
 const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (props: SelectedProps) => {
   const { hasHalfHour, checkedDatas, handleEmpty } = props
 
-  // 增加数据字段，方便展示
+  // Add data fields for easy display 
   let cacheChecked = checkedDatas || []
   cacheChecked.sort(sort).map((item, index) => {
     cacheChecked[index].week = weekMaps.get(item.iden)
     cacheChecked[index].mergeTimes = handleMergeTimes(hasHalfHour, item.times.sort(sort))
   })
 
-  // 清除
+  // clear
   const handleClear = () => {
     handleEmpty()
   }
@@ -98,10 +98,10 @@ const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (props: Se
         <div className="wtrp-clearfix">
           {
             checkedDatas.length === 0 ? 
-              <span className="wtrp-fl tip-text">可拖动鼠标选择时间段</span> :
-              <span className="wtrp-fl tip-text">已选择时间段</span>
+              <span className="wtrp-fl tip-text">Drag the mouse to select the time period</span> :
+              <span className="wtrp-fl tip-text">Time period selected</span>
           }
-          <a className="wtrp-fr" onClick={handleClear}>清空选择</a>
+          <a className="wtrp-fr" onClick={handleClear}>clear selection</a>
         </div>
         {
           cacheChecked.map((item, i) => {

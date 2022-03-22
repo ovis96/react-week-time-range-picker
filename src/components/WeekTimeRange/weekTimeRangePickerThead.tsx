@@ -1,6 +1,6 @@
 import React from 'react'
-import { TheadProps } from '../interface'
-import { theadFirstTd, theadTimeRange, theadWithHalfHours, theadWithHours } from '../config/thead.js'
+import { theadFirstTd, theadTimeRange, theadWithHalfHours, theadWithHours } from '../../config/thead.js'
+import { TheadProps } from '../ReactWeekTimeRangePicker/ReactWeekTimeRangePicker.type'
 
 const WeekTimeRangePickerThead: React.FunctionComponent<TheadProps> = (props: TheadProps) => {
   const hours = props.hasHalfHour ? theadWithHalfHours : theadWithHours

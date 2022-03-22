@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { theadWithHalfHours, theadWithHours } from '../../config/thead.js'
 import { weeks } from '../../config/tbody.js'
 import { sort, sortHour, handleRange, handleDayRange, handleCheckedData } from '../../util/index'
-import "../less/time-range-picker-tbody.less"
+import "../../less/time-range-picker-tbody.less"
 import WeekTimeRangeSelected from './weekTimeRangeSelected'
 import { TbodyProps, SelectedDataProps } from '../ReactWeekTimeRangePicker/ReactWeekTimeRangePicker.type.js'
 
