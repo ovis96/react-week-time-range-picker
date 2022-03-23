@@ -86,7 +86,7 @@ const format = (last) => {
 const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (
   props: SelectedProps
 ) => {
-  const { hasHalfHour, checkedDatas, handleEmpty } = props;
+  const { hasHalfHour, checkedDatas, handleEmpty, summaryColor, fontColor } = props;
 
   // Add data fields for easy display
   let cacheChecked = checkedDatas.filter((item) => item.iden !== "") || [];
@@ -103,17 +103,17 @@ const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (
   };
 
   return (
-    <tr className="wtrp-time-range-selected">
+    <tr className="wtrp-time-range-selected" style={{ backgroundColor: summaryColor }}>
       <td colSpan={49} className="wtrp-selected-td">
         <div className="wtrp-clearfix">
           {checkedDatas.length === 0 ? (
-            <span className="wtrp-fl tip-text">
+            <span className="wtrp-fl tip-text"  style={{ color: fontColor}}>
               Drag the mouse to select the time period
             </span>
           ) : (
-            <span className="wtrp-fl tip-text">Time period selected</span>
+            <span className="wtrp-fl tip-text" style={{ color: fontColor}}>Time period selected</span>
           )}
-          <a className="wtrp-fr" onClick={handleClear}>
+          <a className="wtrp-fr" onClick={handleClear} style={{ color: fontColor}}>
             clear selection
           </a>
         </div>
@@ -121,11 +121,11 @@ const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (
           return (
             <div className="wtrp-selected-td__selected-time" key={i}>
               <p className="wtrp-flex wtrp-break">
-                <span className="tip-text">{item.dayName}：</span>
+                <span className="tip-text" style={{ color: fontColor}}>{item.dayName}：</span>
                 <span className="wtrp-flex-1">
                   {item.timeRanges.map((time, timeIndex) => {
                     return (
-                      <span className="wtrp-selected-text" key={timeIndex}>
+                      <span className="wtrp-selected-text" key={timeIndex} style={{ color: fontColor}}>
                         {hasHalfHour
                           ? `${time[0]}~${time[time.length - 1]}`
                           : `${time[0]}~` + format(time[time.length - 1])}
