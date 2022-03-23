@@ -82,9 +82,11 @@ const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (props: Se
 
   // Add data fields for easy display 
   let cacheChecked = checkedDatas || []
-  cacheChecked.sort(sort).map((item, index) => {
+  cacheChecked.sort(sort)
+  cacheChecked.forEach((item, index) => {
     cacheChecked[index].week = weekMaps.get(item.iden)
-    cacheChecked[index].mergeTimes = handleMergeTimes(hasHalfHour, item.times.sort(sort))
+    item.times.sort(sort)
+    cacheChecked[index].mergeTimes = handleMergeTimes(hasHalfHour, item.times)
   })
 
   // clear

@@ -184,11 +184,13 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (props: Tb
         hoursArr = [cach.cacheStart.hour, cach.cacheEnd.hour],
         tempHasStart = hasStart,
         cacheChecked = JSON.parse(JSON.stringify(checkedDatas));
-    const dayRange = handleDayRange(daysArr.sort(sort))
-    const timeRange = handleRange(hasHalfHour, hoursArr.sort(sortHour)) // The time range of the box selection
-    for (let i = 0; i < dayRange.length; i++) {
-      let {has, idenIndex} = isHasStart(dayRange[i])
-      handleCheckedData({ cacheChecked, hasStart: tempHasStart, has, idenIndex, iden: dayRange[i], timeRange})
+    daysArr.sort(sort)
+    hoursArr.sort(sortHour)
+    const dayRange = handleDayRange(daysArr)
+    const timeRange = handleRange(hasHalfHour, hoursArr) // The time range of the box selection
+    for (let day of dayRange) {
+      let {has, idenIndex} = isHasStart(day)
+      handleCheckedData({ cacheChecked, hasStart: tempHasStart, has, idenIndex, iden: day, timeRange})
     }
     setCheckedDatas(cacheChecked)
   }

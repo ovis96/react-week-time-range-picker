@@ -15,5 +15,6 @@ const Template: Story<ReactWeekTimeRangePickerProps> = (args) => <ReactWeekTimeR
 
 export const Primary = Template.bind({});
 Primary.args = {
-  hasHalfHour: true
+  hasHalfHour: true,
+  selectTimeRange: (selectTimeRange) => console.log(selectTimeRange)
 };

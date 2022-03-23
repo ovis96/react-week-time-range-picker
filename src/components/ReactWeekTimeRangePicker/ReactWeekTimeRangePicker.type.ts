@@ -26,11 +26,11 @@ export interface DragProps {
 }
 
 export interface TheadProps extends PropsWithChildren<{}> {
-  hasHalfHour: Boolean;
+  hasHalfHour: boolean;
 }
 
 export interface TbodyProps extends PropsWithChildren<{}> {
-  hasHalfHour: Boolean;
+  hasHalfHour: boolean;
   checkedDatas?: SelectedDataProps[];
   handleDrag: (props: DragProps) => void;
   handleSelect: (selected: SelectedDataProps[]) => void;
@@ -38,7 +38,7 @@ export interface TbodyProps extends PropsWithChildren<{}> {
 }
 
 export interface SelectedProps extends PropsWithChildren<{}> {
-  hasHalfHour: Boolean;
+  hasHalfHour: boolean;
   checkedDatas?: SelectedDataProps[];
   handleEmpty: () => void
 }

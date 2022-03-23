@@ -15,10 +15,6 @@ let startLayerX = 0 // Record the distance from the upper left corner of the td 
 let startLayerY = 0 // The distance from the upper left corner of the record starting point to the upper left corner of the td and the y-axis of the table
 let topY = 0 // Record the vertical deviation of the boundary when the starting point is clicked
 let leftX = 0 // record starting point when layerX is clicked - The distance from the left side of the td to the left side of the table
-let popperTop = 0 // The offset value of the record prompt box compared to the bottom of the table
-let popperLeft = 0 // Record the left offset value of the prompt box table
-let currentVal = '' // Cache the concatenated string of the week and hour corresponding to the current td
-let nextTime = '' // Cache the next time of the current time, for example, if it is currently at 00:00, the next time should be 00:30 or 01:00 (determined according to hasHalfHour)
 
 const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePickerProps> = (props: ReactWeekTimeRangePickerProps) => {
   const [isDrag, setIsDrag] = useState(false) // Control drag frame development
@@ -111,8 +107,6 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
       diffY < 0 ? setTop(startY - topY - height + 20) : setTop(startY - topY)
     }
     isFocus = true
-    // setIsFocus(true)
-    // tipPosition(iden, hour, value)
   }
 
   /**
@@ -128,32 +122,10 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
     * 1. When a time period with more than 7 intervals is selected, the week will occupy two lines, and the height will increase from 21 to 42, so it is necessary to traverse the selected time data to determine how many lines it occupies in total 
    */
 
-  //  const tipPosition = (iden, time, value) => {
-  //    const hour = ~~time.substring(0, 2)
-  //    const minute = ~~time.substring(3)
-  //    currentVal = value
-  //   //  const tableHeight = this.$refs.table.clientHeight
-  //   //  popperTop = (~~iden + 1) * 20 + 40 - tableHeight - 55
-  //    // 只有小时
-  //    if (!hasHalfHour) {
-  //      nextTime = hour + 1 >= 10 ? `${hour + 1}:00` : `0${hour + 1}:00`
-  //      popperLeft = (hour - 1) * 16 + 13
-  //      return
-  //    }
-  //    if (minute === 30) {
-  //      nextTime = hour + 1 >= 10 ? `${hour + 1}:00` : `0${hour + 1}:00`
-  //      popperLeft = (hour * 2) * 16 + 13
-  //      return
-  //    }
-  //    nextTime = time.substring(0, 2) + ':30'
-  //    popperLeft = (hour * 2 - 1) * 16 + 13
-  //  }
-
   return (
     <div className="week-time-range-picker" style={
       hasHalfHour ? {maxWidth: '830px'} : {maxWidth: '450px'}
     }>
-      {/* drag box */}
       {
         isDrag ? 
           <div className="wtrp-schedule" style={
@@ -174,14 +146,6 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
           handleMoveout={handleMoveout} 
         />
       </table >
-      {/* <div className="wtrp-byted-popover-wrapper">
-        <div className="ant-tooltip ant-tooltip-placement-top ant-tooltip-hidden">
-          <div className="ant-tooltip-content">
-            <div className="ant-tooltip-arrow"></div>
-            <div className="ant-tooltip-inner">{1}</div>
-          </div>
-        </div>
-      </div> */}
     </div >
   )
 }
