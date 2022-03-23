@@ -1,10 +1,13 @@
 {
   "name": "react-week-time-range-picker",
   "version": "2.0.0",
-  "description": "",
+  "description": "A React component for selecting a range of hours per day of the week",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "./src/react-app.d.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --hot --inline",
@@ -48,8 +51,8 @@
     "react-dom": "^17.0.2",
     "rollup": "^2.70.1",
     "rollup-plugin-dts": "^4.2.0",
-    "rollup-plugin-less-modules": "^0.1.11",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
     "style-loader": "^2.0.0",
     "typescript": "^4.6.2"

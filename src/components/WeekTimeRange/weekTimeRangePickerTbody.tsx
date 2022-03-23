@@ -45,7 +45,8 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
       document.body.removeEventListener("mouseup", handleBodyMouseUp);
   });
 
-  const { hasHalfHour, handleDrag, handleSelect, handleMoveOut, fontColor } = props;
+  const { hasHalfHour, handleDrag, handleSelect, handleMoveOut, fontColor } =
+    props;
   const hours = hasHalfHour ? theadWithHalfHours : theadWithHours;
   const colspan = hasHalfHour ? 1 : 2;
 
@@ -242,7 +243,10 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
           <tr className="wtrp-tbody-tr" key={i}>
             <td
               className="week-td"
-              style={{ backgroundColor: props.outerCellColor, color: fontColor }}
+              style={{
+                backgroundColor: props.outerCellColor,
+                color: fontColor,
+              }}
             >
               {item.dayName}
             </td>
@@ -257,15 +261,9 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
                 <td
                   colSpan={colspan}
                   style={
-                    isActive
-                      ? null
-                      : { backgroundColor: props.innerCellColor }
+                    isActive ? null : { backgroundColor: props.innerCellColor }
                   }
-                  className={
-                    isActive
-                      ? "wtrp-active-td"
-                      : "wtrp-freeze-td"
-                  }
+                  className={isActive ? "wtrp-active-td" : "wtrp-freeze-td"}
                   key={index}
                   data-hour={hour.time}
                   data-iden={item.iden}

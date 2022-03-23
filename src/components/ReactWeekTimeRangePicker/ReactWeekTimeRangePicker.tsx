@@ -39,7 +39,14 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
       };
     });
 
-    const { hasHalfHour, selectTimeRange, outerCellColor, innerCellColor, fontColor, summaryColor } = props;
+    const {
+      hasHalfHour,
+      selectTimeRange,
+      outerCellColor,
+      innerCellColor,
+      fontColor,
+      summaryColor,
+    } = props;
 
     // Get the selected data and throw it to the parent component
     const handleSelect = (selected: SelectedDataProps[]) => {
@@ -179,7 +186,11 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
           ></div>
         ) : null}
         <table className="wtrp-table">
-          <WeekTimeRangePickerThead hasHalfHour={hasHalfHour} outerCellColor={outerCellColor} fontColor={fontColor} />
+          <WeekTimeRangePickerThead
+            hasHalfHour={hasHalfHour}
+            outerCellColor={outerCellColor}
+            fontColor={fontColor}
+          />
           <WeekTimeRangePickerTbody
             hasHalfHour={hasHalfHour}
             checkedDatas={cacheChecked}

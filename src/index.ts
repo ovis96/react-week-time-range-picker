@@ -1,3 +1,1 @@
-import ReactWeekTimeRangePicker from "./components/ReactWeekTimeRangePicker/ReactWeekTimeRangePicker";
-
-export default ReactWeekTimeRangePicker;
+export * from "./components";

@@ -14,12 +14,26 @@ const WeekTimeRangePickerThead: React.FunctionComponent<TheadProps> = (
   return (
     <thead>
       <tr>
-        <th rowSpan={8} className="week-td" style={{ backgroundColor: props.outerCellColor, color: props.fontColor }}>
+        <th
+          rowSpan={8}
+          className="week-td"
+          style={{
+            backgroundColor: props.outerCellColor,
+            color: props.fontColor,
+          }}
+        >
           {theadFirstTd}
         </th>
         {hours.map((item, i) => {
           return (
-            <td colSpan={colspan} style={{ backgroundColor: props.outerCellColor, color: props.fontColor  }} key={i}>
+            <td
+              colSpan={colspan}
+              style={{
+                backgroundColor: props.outerCellColor,
+                color: props.fontColor,
+              }}
+              key={i}
+            >
               {item.time}
             </td>
           );
