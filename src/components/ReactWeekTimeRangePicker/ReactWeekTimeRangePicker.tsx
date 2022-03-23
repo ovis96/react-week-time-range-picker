@@ -40,12 +40,12 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
     });
 
     const {
-      hasHalfHour,
       selectTimeRange,
       outerCellColor,
       innerCellColor,
       fontColor,
       summaryColor,
+      hasHalfHour = false,
     } = props;
 
     // Get the selected data and throw it to the parent component
