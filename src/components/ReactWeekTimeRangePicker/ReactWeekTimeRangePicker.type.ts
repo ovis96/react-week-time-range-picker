@@ -10,7 +10,7 @@ export interface SelectedDataProps {
 export interface ReactWeekTimeRangePickerProps extends PropsWithChildren<{}> {
   hasHalfHour?: boolean;
   selectedData?: SelectedDataProps[];
-  selectTimeRange?: (checked: SelectedDataProps[]) => void
+  selectTimeRange?: (checked: SelectedDataProps[]) => void;
 }
 
 export interface DragProps {
@@ -40,5 +40,5 @@ export interface TbodyProps extends PropsWithChildren<{}> {
 export interface SelectedProps extends PropsWithChildren<{}> {
   hasHalfHour: boolean;
   checkedDatas?: SelectedDataProps[];
-  handleEmpty: () => void
+  handleEmpty: () => void;
 }
