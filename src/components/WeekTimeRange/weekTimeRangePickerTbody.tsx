@@ -78,6 +78,7 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
     }
     isHasStart(cach.cacheStart.iden, cach.cacheStart.hour);
   };
+
   /**
    * @desc When the mouseup event occurs, the corresponding end time data is recorded, and the selected time range is calculated at the same time.
    */
@@ -137,6 +138,7 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
       : cacheChecked[idenIndex].times.splice(index, 1);
     setCheckedDatas([...cacheChecked]);
   };
+
   /**
    * @desc When the event is triggered, extract the same assignment code
    */
@@ -158,12 +160,14 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
     }
     return false;
   };
+
   // Clear the cache's cacheStart and cacheEnd
   const clearCache = (key) => {
     cach[key].iden = "";
     cach[key].hour = "";
     cach[key].group = "";
   };
+
   // Clear all data
   const handleEmpty = () => {
     hasStart = false;
@@ -171,6 +175,7 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
     clearCache("cacheEnd");
     setCheckedDatas([]);
   };
+
   /**
    * @desc In view of the fact that both click and mousedown need to traverse the array to determine whether the current time already exists, so extract the common code
    * Returned value:
@@ -196,6 +201,7 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
     }
     return { has, idenIndex, index };
   };
+
   /**
    * @desc Determine the time range according to cacheStart and cacheEnd, modify cacheChecked
    * hasStart false The time within the box selection range to do the selection operation
