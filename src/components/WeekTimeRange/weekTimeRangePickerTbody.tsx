@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { theadWithHalfHours, theadWithHours } from "../../config/thead.js";
-import { weeks } from "../../config/tbody.js";
+import { days } from "../../config/tbody.js";
 import {
   sort,
   sortHour,
@@ -40,16 +40,16 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
   );
 
   useEffect(() => {
-    document.body.addEventListener("mouseup", handleBodyMouseup);
+    document.body.addEventListener("mouseup", handleBodyMouseUp);
     return () =>
-      document.body.removeEventListener("mouseup", handleBodyMouseup);
+      document.body.removeEventListener("mouseup", handleBodyMouseUp);
   });
 
-  const { hasHalfHour, handleDrag, handleSelect, handleMoveout } = props;
+  const { hasHalfHour, handleDrag, handleSelect, handleMoveOut } = props;
   const hours = hasHalfHour ? theadWithHalfHours : theadWithHours;
   const colspan = hasHalfHour ? 1 : 2;
 
-  const handleBodyMouseup = (e) => {
+  const handleBodyMouseUp = (e) => {
     if (e && !e.target.dataset.hour) {
       isDrag = false;
     }
@@ -60,7 +60,7 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
    *         The headline is selected or unselected according to the starting point, so you should first judge whether the starting point is selected or not.
    *         If yes, uncheck all the times within the frame selection range, otherwise check all.
    */
-  const handleMousedown = (e) => {
+  const handleMouseDown = (e) => {
     e.preventDefault();
     e.stopPropagation();
     isDrag = true;
@@ -81,7 +81,7 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
   /**
    * @desc When the mouseup event occurs, the corresponding end time data is recorded, and the selected time range is calculated at the same time.
    */
-  const handleMouseup = (e) => {
+  const handleMouseUp = (e) => {
     e.preventDefault();
     e.stopPropagation();
     isDrag = false;
@@ -91,11 +91,11 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
     handleDrag({ type: "up" });
     handleSelect(checkedDatas);
   };
-  const handleMousemove = (e) => {
+  const handleMouseMove = (e) => {
     if (!e.target.dataset.hour) {
       return;
     }
-    handleMoveout(false);
+    handleMoveOut(false);
     const dragData = {
       type: "move",
       clientX: e.clientX,
@@ -226,11 +226,11 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
   return (
     <tbody
       className="wtrp-tbody"
-      onMouseDown={handleMousedown}
-      onMouseUp={handleMouseup}
-      onMouseMove={handleMousemove}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onMouseMove={handleMouseMove}
     >
-      {weeks.map((item, i) => {
+      {days.map((item, i) => {
         return (
           <tr className="wtrp-tbody-tr" key={i}>
             <td className="week-td">{item.dayName}</td>

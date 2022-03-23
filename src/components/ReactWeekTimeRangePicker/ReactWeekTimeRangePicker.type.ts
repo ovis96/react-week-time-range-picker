@@ -34,7 +34,7 @@ export interface TbodyProps extends PropsWithChildren<{}> {
   checkedDatas?: SelectedDataProps[];
   handleDrag: (props: DragProps) => void;
   handleSelect: (selected: SelectedDataProps[]) => void;
-  handleMoveout: (isOut: boolean) => void;
+  handleMoveOut: (isOut: boolean) => void;
 }
 
 export interface SelectedProps extends PropsWithChildren<{}> {

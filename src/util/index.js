@@ -64,9 +64,9 @@ export const handleCheckedData = ({cacheChecked, hasStart, has, idenIndex, iden,
   if (!hasStart && !has) {
     cacheChecked.push(temp)
   }
-  for (let i = 0; i < timeRange.length; i++) {
+  for (let time of timeRange) {
     // Find whether the current time has been selected before; such as previous click, box selection behavior
-    timeIndex = !!has ? cacheChecked[idenIndex].times.indexOf(timeRange[i]) : -1
+    timeIndex = !!has ? cacheChecked[idenIndex].times.indexOf(time) : -1
     // uncheck; prune the selected time range// 取消选中；对已选中的时间范围进行删减
     if (hasStart && has) {
       timeIndex >= 0 && cacheChecked[idenIndex].times.splice(timeIndex, 1)
@@ -80,11 +80,11 @@ export const handleCheckedData = ({cacheChecked, hasStart, has, idenIndex, iden,
     if (!hasStart) {
       // The week already exists in the selected data, but the time is not available
       if (timeIndex === -1 && idenIndex >= 0) {
-        cacheChecked[idenIndex].times.push(timeRange[i])
+        cacheChecked[idenIndex].times.push(time)
         continue
       }
       // There is no data for this week in the selected data
-      temp.times.push(timeRange[i])
+      temp.times.push(time)
     }
   }
 }

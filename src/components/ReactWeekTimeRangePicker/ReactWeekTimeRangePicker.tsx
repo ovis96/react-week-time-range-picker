@@ -32,10 +32,10 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
 
     useEffect(() => {
       document.body.addEventListener("mouseup", handleMouseup);
-      document.body.addEventListener("mousemove", handleMousemove);
+      document.body.addEventListener("mousemove", handleMouseMove);
       return () => {
         document.body.removeEventListener("mouseup", handleMouseup);
-        document.body.removeEventListener("mousemove", handleMousemove);
+        document.body.removeEventListener("mousemove", handleMouseMove);
       };
     });
 
@@ -54,13 +54,13 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
       }
     };
     // Drag and drop beyond the table range
-    const handleMousemove = (e) => {
+    const handleMouseMove = (e) => {
       if (!e.target.dataset.hour) {
         isMoveout = true;
       }
     };
 
-    const handleMoveout = (isOut: boolean) => {
+    const handleMoveOut = (isOut: boolean) => {
       isMoveout = isOut;
     };
 
@@ -195,7 +195,7 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
             checkedDatas={cacheChecked}
             handleDrag={handleDrag}
             handleSelect={handleSelect}
-            handleMoveout={handleMoveout}
+            handleMoveOut={handleMoveOut}
           />
         </table>
       </div>

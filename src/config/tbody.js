@@ -1,4 +1,4 @@
-export const weeks = [
+export const days = [
   {
     iden: '1',
     dayName: 'Monday'
@@ -30,7 +30,7 @@ export const weeks = [
 ]
 
 const weekMaps = new Map()
-weeks.forEach((item) => {
+days.forEach((item) => {
   weekMaps.set(item.iden, item.dayName)
 })
 

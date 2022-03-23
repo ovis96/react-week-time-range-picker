@@ -24,7 +24,7 @@ const sort = (curr, next) => {
  * @desc Merge times, merge time periods without interval such as [00:00, 01:00, 02:00]
  * If it takes half an hour, then it takes [00:00, 00:30, 01:00] to merge into [00:00, 01:00]
  */
-const handletimeRanges = (hasHalfHour, times) => {
+const handleTimeRanges = (hasHalfHour, times) => {
   let timeRanges = [[times[0]]];
   hasHalfHour
     ? handleMergeHalfHour(times, timeRanges)
@@ -78,7 +78,7 @@ const handleMergeHalfHour = (times, timeRanges) => {
 };
 
 // If it is only an hour, it needs to be dealt with
-const fromat = (last) => {
+const format = (last) => {
   const hour = ~~last.substring(0, 2) + 1;
   return hour > 9 ? `${hour}:00` : `0${hour}:00`;
 };
@@ -94,7 +94,7 @@ const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (
   cacheChecked.forEach((item, index) => {
     cacheChecked[index].dayName = weekMaps.get(item.iden);
     item.times.sort(sort);
-    cacheChecked[index].timeRanges = handletimeRanges(hasHalfHour, item.times);
+    cacheChecked[index].timeRanges = handleTimeRanges(hasHalfHour, item.times);
   });
 
   // clear
@@ -128,7 +128,7 @@ const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (
                       <span className="wtrp-selected-text" key={timeIndex}>
                         {hasHalfHour
                           ? `${time[0]}~${time[time.length - 1]}`
-                          : `${time[0]}~` + fromat(time[time.length - 1])}
+                          : `${time[0]}~` + format(time[time.length - 1])}
                       </span>
                     );
                   })}
