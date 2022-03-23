@@ -24,33 +24,33 @@ const sort = (curr, next) => {
  * @desc Merge times, merge time periods without interval such as [00:00, 01:00, 02:00]
  * If it takes half an hour, then it takes [00:00, 00:30, 01:00] to merge into [00:00, 01:00]
  */
-const handleMergeTimes = (hasHalfHour, times) => {
-  let mergeTimes = [[times[0]]];
+const handletimeRanges = (hasHalfHour, times) => {
+  let timeRanges = [[times[0]]];
   hasHalfHour
-    ? handleMergeHalfHour(times, mergeTimes)
-    : handleMergeHour(times, mergeTimes);
-  return mergeTimes;
+    ? handleMergeHalfHour(times, timeRanges)
+    : handleMergeHour(times, timeRanges);
+  return timeRanges;
 };
 
 // Only hourly data merge
-const handleMergeHour = (times, mergeTimes) => {
+const handleMergeHour = (times, timeRanges) => {
   times.forEach((item) => {
-    const lastMergeArr = mergeTimes.slice(-1)[0];
+    const lastMergeArr = timeRanges.slice(-1)[0];
     const isNext =
       item.substring(0, 2) - lastMergeArr.slice(-1)[0].substring(0, 2) === 1;
     if (isNext) {
       lastMergeArr.push(item);
     }
     if (!isNext && item !== times[0]) {
-      mergeTimes.push([item]);
+      timeRanges.push([item]);
     }
   });
 };
 
 // Data merge with half an hour
-const handleMergeHalfHour = (times, mergeTimes) => {
+const handleMergeHalfHour = (times, timeRanges) => {
   times.forEach((item) => {
-    const lastMergeArr = mergeTimes.slice(-1)[0];
+    const lastMergeArr = timeRanges.slice(-1)[0];
     // 00:00-00:30 or 00:30 - 01:00
     // hour*100 + 0 or 50, half an hour becomes 50
     const lastMergeItem = lastMergeArr.slice(-1)[0];
@@ -64,10 +64,10 @@ const handleMergeHalfHour = (times, mergeTimes) => {
       lastMergeArr.push(item);
     }
     if (!isNext && item !== times[0]) {
-      mergeTimes.push([item]);
+      timeRanges.push([item]);
     }
   });
-  mergeTimes.forEach((item) => {
+  timeRanges.forEach((item) => {
     const hour = +item.slice(-1)[0].substring(0, 2);
     if (item.slice(-1)[0].substring(3) === "30") {
       hour > 8 ? item.push(`${hour + 1}:00`) : item.push(`0${hour + 1}:00`);
@@ -94,7 +94,7 @@ const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (
   cacheChecked.forEach((item, index) => {
     cacheChecked[index].week = weekMaps.get(item.iden);
     item.times.sort(sort);
-    cacheChecked[index].mergeTimes = handleMergeTimes(hasHalfHour, item.times);
+    cacheChecked[index].timeRanges = handletimeRanges(hasHalfHour, item.times);
   });
 
   // clear
@@ -123,7 +123,7 @@ const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (
               <p className="wtrp-flex wtrp-break">
                 <span className="tip-text">{item.week}：</span>
                 <span className="wtrp-flex-1">
-                  {item.mergeTimes.map((time, timeIndex) => {
+                  {item.timeRanges.map((time, timeIndex) => {
                     return (
                       <span className="wtrp-selected-text" key={timeIndex}>
                         {hasHalfHour

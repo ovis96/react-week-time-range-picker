@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react";
 
 export interface SelectedDataProps {
   iden?: string;
-  mergeTimes?: string[][];
+  timeRanges?: string[][];
   times?: string[];
   week?: string;
 }
