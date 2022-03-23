@@ -1,7 +1,6 @@
 import React from "react";
 import {
   theadFirstTd,
-  theadTimeRange,
   theadWithHalfHours,
   theadWithHours,
 } from "../../config/thead.js";
@@ -18,15 +17,6 @@ const WeekTimeRangePickerThead: React.FunctionComponent<TheadProps> = (
         <th rowSpan={8} className="week-td">
           {theadFirstTd}
         </th>
-        {theadTimeRange.map((item, i) => {
-          return (
-            <th colSpan={24} key={i}>
-              {item}
-            </th>
-          );
-        })}
-      </tr>
-      <tr>
         {hours.map((item, i) => {
           return (
             <td colSpan={colspan} key={i}>
