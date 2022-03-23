@@ -3,6 +3,7 @@ import "../../less/base.less";
 import "../../less/time-range-picker-select.less";
 import { weekMaps } from "../../config/tbody.js";
 import { SelectedProps } from "../ReactWeekTimeRangePicker/ReactWeekTimeRangePicker.type";
+import { time } from "console";
 
 /**
  * @desc sort the selected dates,
@@ -10,14 +11,18 @@ import { SelectedProps } from "../ReactWeekTimeRangePicker/ReactWeekTimeRangePic
  * Sort by time: 00:00~23:00
  */
 const sort = (curr, next) => {
-  if (curr.iden) {
+  if (typeof curr === "object" && typeof next === "object" && curr.iden) {
     return curr.iden - next.iden;
   }
-  // Sort 00:00 and 00:30
-  if (curr.substring(0, 2) === next.substring(0, 2)) {
-    return curr.substring(3) - next.substring(3);
+
+  if (typeof curr === "string" && typeof next === "string") {
+    // Sort 00:00 and 00:30
+    if (curr.substring(0, 2) === next.substring(0, 2)) {
+      return (curr.substring(3) as any) - (next.substring(3) as any);
+    }
+    return (curr.substring(0, 2) as any) - (next.substring(0, 2) as any);
   }
-  return curr.substring(0, 2) - next.substring(0, 2);
+  return curr;
 };
 
 /**
@@ -49,6 +54,7 @@ const handleMergeHour = (times, timeRanges) => {
 
 // Data merge with half an hour
 const handleMergeHalfHour = (times, timeRanges) => {
+  console.log(times)
   times.forEach((item) => {
     const lastMergeArr = timeRanges.slice(-1)[0];
     // 00:00-00:30 or 00:30 - 01:00
@@ -67,7 +73,9 @@ const handleMergeHalfHour = (times, timeRanges) => {
       timeRanges.push([item]);
     }
   });
-  timeRanges.forEach((item) => {
+
+  timeRanges = timeRanges.filter((e) => e.some((t) => t != undefined));
+  timeRanges.forEach((item: any[]) => {
     const hour = +item.slice(-1)[0].substring(0, 2);
     if (item.slice(-1)[0].substring(3) === "30") {
       hour > 8 ? item.push(`${hour + 1}:00`) : item.push(`0${hour + 1}:00`);
@@ -118,24 +126,26 @@ const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (
           </a>
         </div>
         {cacheChecked.map((item, i) => {
-          return (
-            <div className="wtrp-selected-td__selected-time" key={i}>
-              <p className="wtrp-flex wtrp-break">
-                <span className="tip-text">{item.dayName}：</span>
-                <span className="wtrp-flex-1">
-                  {item.timeRanges.map((time, timeIndex) => {
-                    return (
-                      <span className="wtrp-selected-text" key={timeIndex}>
-                        {hasHalfHour
-                          ? `${time[0]}~${time[time.length - 1]}`
-                          : `${time[0]}~` + format(time[time.length - 1])}
-                      </span>
-                    );
-                  })}
-                </span>
-              </p>
-            </div>
-          );
+          if (!item.timeRanges.some((t) => t.some((e) => e == undefined))) {
+            return (
+              <div className="wtrp-selected-td__selected-time" key={i}>
+                <p className="wtrp-flex wtrp-break">
+                  <span className="tip-text">{item.dayName}：</span>
+                  <span className="wtrp-flex-1">
+                    {item.timeRanges.map((time, timeIndex) => {
+                      return (
+                        <span className="wtrp-selected-text" key={timeIndex}>
+                          {hasHalfHour
+                            ? `${time[0]}~${time[time.length - 1]}`
+                            : `${time[0]}~` + format(time[time.length - 1])}
+                        </span>
+                      );
+                    })}
+                  </span>
+                </p>
+              </div>
+            );
+          }
         })}
       </td>
     </tr>

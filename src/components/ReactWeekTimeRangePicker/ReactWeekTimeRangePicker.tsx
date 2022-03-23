@@ -31,10 +31,10 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
     ); // Cache selected time data
 
     useEffect(() => {
-      document.body.addEventListener("mouseup", handleMouseup);
+      document.body.addEventListener("mouseup", handleMouseUp);
       document.body.addEventListener("mousemove", handleMouseMove);
       return () => {
-        document.body.removeEventListener("mouseup", handleMouseup);
+        document.body.removeEventListener("mouseup", handleMouseUp);
         document.body.removeEventListener("mousemove", handleMouseMove);
       };
     });
@@ -48,11 +48,12 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
     };
 
     // Release after dragging exceeds the table range
-    const handleMouseup = (e) => {
+    const handleMouseUp = (e) => {
       if (e && !e.target.dataset.hour) {
         setIsDrag(false);
       }
     };
+
     // Drag and drop beyond the table range
     const handleMouseMove = (e) => {
       if (!e.target.dataset.hour) {
@@ -82,7 +83,7 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
         isFocus = false;
         return;
       }
-      let tempWidth, tempHeight;
+      let tempWidth: number, tempHeight: number;
       const factor = hasHalfHour ? 2 : 1; // Determine the multiple of the td offset based on whether there is a half hour
       // Convert the time corresponding to the td where the starting point is located, such as '10:00' into ['10', '00'] format
       const hourMinuteArr = hour.split(":");
@@ -103,6 +104,7 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
             value,
           });
     };
+
     // on press
     const handleDragDown = ({
       clientX,
@@ -125,6 +127,7 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
       setTop(startY - topY);
       setLeft(startX - leftX);
     };
+
     // It may be a normal move, or it may be a drag move
     const handleDragMove = ({
       isDrag,
@@ -152,25 +155,12 @@ const ReactWeekTimeRangePicker: React.FunctionComponent<ReactWeekTimeRangePicker
         setWidth(newWidth);
         setHeight(newHeight);
         diffX < 0
-          ? setLeft(startX - leftX - width + 16)
+          ? setLeft(startX - leftX - width + 25)
           : setLeft(startX - leftX);
-        diffY < 0 ? setTop(startY - topY - height + 20) : setTop(startY - topY);
+        diffY < 0 ? setTop(startY - topY - height + 10) : setTop(startY - topY);
       }
       isFocus = true;
     };
-
-    /**
-     * @param {string} iden the day of the week where the current td is located
-     * @param {string} tdIndex The current td is at the position of this tr
-     * @desc Calculate the position of the tooltip
-     * popperLeft: Calculate the offset value of the prompt box from the left side of the table,
-     * popperLeft = the horizontal distance of the td from the right side of the week-td - ? (calculated with or without half an hour)
-     * ? ==> Depends on the content width of the reminder box, without half an hour === half the width of the content box, exactly 31 approximately 32
-     * popperTop: Calculate the offset value of the prompt box below the table,
-     * popperTop = the vertical height of the week from the thead where the td is located + thead height - (table real-time height + reminder box height)
-     * Bug fixes:
-     * 1. When a time period with more than 7 intervals is selected, the week will occupy two lines, and the height will increase from 21 to 42, so it is necessary to traverse the selected time data to determine how many lines it occupies in total
-     */
 
     return (
       <div

@@ -91,6 +91,7 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
     handleDrag({ type: "up" });
     handleSelect(checkedDatas);
   };
+  
   const handleMouseMove = (e) => {
     if (!e.target.dataset.hour) {
       return;
