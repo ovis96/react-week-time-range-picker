@@ -30,7 +30,7 @@ const WeekTimeRangePickerThead: React.FunctionComponent<TheadProps> = (
         {hours.map((item, i) => {
           return (
             <td colSpan={colspan} key={i}>
-              {item.hour}
+              {item.time}
             </td>
           );
         })}
