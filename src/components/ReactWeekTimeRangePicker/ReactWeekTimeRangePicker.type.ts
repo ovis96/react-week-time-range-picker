@@ -4,7 +4,7 @@ export interface SelectedDataProps {
   iden?: string;
   timeRanges?: string[][];
   times?: string[];
-  week?: string;
+  dayName?: string;
 }
 
 export interface ReactWeekTimeRangePickerProps extends PropsWithChildren<{}> {

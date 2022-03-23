@@ -92,7 +92,7 @@ const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (
   let cacheChecked = checkedDatas || [];
   cacheChecked.sort(sort);
   cacheChecked.forEach((item, index) => {
-    cacheChecked[index].week = weekMaps.get(item.iden);
+    cacheChecked[index].dayName = weekMaps.get(item.iden);
     item.times.sort(sort);
     cacheChecked[index].timeRanges = handletimeRanges(hasHalfHour, item.times);
   });
@@ -121,7 +121,7 @@ const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (
           return (
             <div className="wtrp-selected-td__selected-time" key={i}>
               <p className="wtrp-flex wtrp-break">
-                <span className="tip-text">{item.week}：</span>
+                <span className="tip-text">{item.dayName}：</span>
                 <span className="wtrp-flex-1">
                   {item.timeRanges.map((time, timeIndex) => {
                     return (

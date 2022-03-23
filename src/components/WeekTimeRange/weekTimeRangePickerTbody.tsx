@@ -233,7 +233,7 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
       {weeks.map((item, i) => {
         return (
           <tr className="wtrp-tbody-tr" key={i}>
-            <td className="week-td">{item.week}</td>
+            <td className="week-td">{item.dayName}</td>
             {hours.map((hour, index) => {
               return (
                 <td
@@ -251,7 +251,7 @@ const WeekTimeRangePickerTbody: React.FunctionComponent<TbodyProps> = (
                   key={index}
                   data-hour={hour.time}
                   data-iden={item.iden}
-                  data-value={`${item.week} ${hour.time}`}
+                  data-value={`${item.dayName} ${hour.time}`}
                 ></td>
               );
             })}

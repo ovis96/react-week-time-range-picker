@@ -1,37 +1,37 @@
 export const weeks = [
   {
     iden: '1',
-    week: 'Monday'
+    dayName: 'Monday'
   },
   {
     iden: '2',
-    week: 'Tuesday'
+    dayName: 'Tuesday'
   },
   {
     iden: '3',
-    week: 'Wednesday'
+    dayName: 'Wednesday'
   },
   {
     iden: '4',
-    week: 'Thursday'
+    dayName: 'Thursday'
   },
   {
     iden: '5',
-    week: 'Friday'
+    dayName: 'Friday'
   },
   {
     iden: '6',
-    week: 'Saturday'
+    dayName: 'Saturday'
   },
   {
     iden: '7',
-    week: 'Sunday'
+    dayName: 'Sunday'
   }
 ]
 
 const weekMaps = new Map()
 weeks.forEach((item) => {
-  weekMaps.set(item.iden, item.week)
+  weekMaps.set(item.iden, item.dayName)
 })
 
 export {weekMaps}
