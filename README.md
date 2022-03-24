@@ -65,3 +65,4 @@ The structure of SelectedDataProps:
  
  ## Known issues
  - The drag box is inaccurate following the mouse movement
+ - If you encouter a "Cannot find module '@marinos33/react-week-time-range-picker' or its corresponding type declarations." when importing the module just add "// @ts-ignore" above. It will solve the error for now.
