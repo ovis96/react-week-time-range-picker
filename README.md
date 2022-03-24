@@ -3,6 +3,8 @@
 ## Introduction
 It's a simple React component for selecting a range of hours per day of the week.
 
+![image](https://user-images.githubusercontent.com/51862073/159894346-101b05b0-41e8-489e-a9f1-d5c2b476a38a.png)
+
 This component is a fork from https://github.com/lizhongzhen11/react-week-time-range-picker
 With various change such as:
 - Reworked completely in english rather than in chinese
