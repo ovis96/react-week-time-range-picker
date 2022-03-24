@@ -6,8 +6,7 @@ It's a simple React component for selecting a range of hours per day of the week
 
 ![image](https://user-images.githubusercontent.com/51862073/159894346-101b05b0-41e8-489e-a9f1-d5c2b476a38a.png)
 
-This component is a fork from https://github.com/lizhongzhen11/react-week-time-range-picker
-With various change such as:
+This component is a fork from https://github.com/lizhongzhen11/react-week-time-range-picker with various change such as:
 - Reworked completely in english rather than in chinese
 - Add customizable styles
 - Better architecture and code improvement
@@ -17,8 +16,8 @@ With various change such as:
 - Some bug fixes
 
 ## Get Started
-To start using it do
-`$ npm install @marinos33/react-week-time-range-picker --save`
+To start using it do <br/>
+`npm install @marinos33/react-week-time-range-picker --save`
 
 And then you can import it like this:
 
@@ -28,7 +27,7 @@ import ReactWeekTimeRangePicker from '@marinos33/react-week-time-range-picker'
 <ReactWeekTimeRangePicker />
 ```
 
-##Props
+## Props
 The available props for this components are the following.
 | Prop                 | Description                                                        | Type                                              | Default   |
 | ---------------------| -------------------------------------------------------------------|---------------------------------------------------|-----------|
