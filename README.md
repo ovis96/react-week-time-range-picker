@@ -1,4 +1,5 @@
 # react-week-time-range-picker
+[![NPM Status](https://img.shields.io/npm/dm/@marinos33/react-week-time-range-picker.svg?style=flat-square)](https://www.npmjs.com/package/@marinos33/react-week-time-range-picker)
 
 ## Introduction
 It's a simple React component for selecting a range of hours per day of the week.
@@ -62,3 +63,6 @@ The structure of SelectedDataProps:
     dayName?: string; //the name of the day. eg: monday, tuesday, etc
  }
  ```
+ 
+ ## Known issues
+ - The drag box is inaccurate following the mouse movement
