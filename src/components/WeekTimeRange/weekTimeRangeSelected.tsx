@@ -13,6 +13,7 @@ const sort = (curr, next) => {
   if (curr.iden) {
     return curr.iden - next.iden;
   }
+
   // Sort 00:00 and 00:30
   if (curr.substring(0, 2) === next.substring(0, 2)) {
     return curr.substring(3) - next.substring(3);
@@ -78,10 +79,12 @@ const handleMergeHalfHour = (times, timeRanges) => {
 };
 
 // If it is only an hour, it needs to be dealt with
-const format = (last) => {
+// Make the time end at the next case near the last one checked 
+/*const format = (last) => {
   const hour = ~~last.substring(0, 2) + 1;
+  console.log(hour)
   return hour > 9 ? `${hour}:00` : `0${hour}:00`;
-};
+};*/
 
 const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (
   props: SelectedProps
@@ -97,7 +100,6 @@ const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (
     item.times.sort(sort);
     cacheChecked[index].timeRanges = handleTimeRanges(hasHalfHour, item.times);
   });
-
   // clear
   const handleClear = () => {
     handleEmpty();
@@ -136,15 +138,14 @@ const WeekTimeRangeSelected: React.FunctionComponent<SelectedProps> = (
                 </span>
                 <span className="wtrp-flex-1">
                   {item.timeRanges.map((time, timeIndex) => {
+                    console.log(time);
                     return (
                       <span
                         className="wtrp-selected-text"
                         key={timeIndex}
                         style={{ color: fontColor }}
                       >
-                        {hasHalfHour
-                          ? `${time[0]}~${time[time.length - 1]}`
-                          : `${time[0]}~` + format(time[time.length - 1])}
+                        {`${time[0]}~${time[time.length - 1]}`}
                       </span>
                     );
                   })}

@@ -15,10 +15,6 @@ const Template: Story<ReactWeekTimeRangePickerProps> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-  hasHalfHour: true,
-  selectTimeRange: (selectTimeRange) => {},
-  outerCellColor: "blue",
-  innerCellColor: "cyan",
-  summaryColor: "darkred",
-  fontColor: "white",
+  hasHalfHour: false,
+  selectTimeRange: (selectTimeRange) => {}
 };
