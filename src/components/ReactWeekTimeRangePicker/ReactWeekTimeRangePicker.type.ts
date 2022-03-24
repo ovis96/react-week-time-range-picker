@@ -14,7 +14,7 @@ export interface ReactWeekTimeRangePickerProps extends PropsWithChildren<{}> {
   outerCellColor?: string;
   innerCellColor?: string;
   fontColor?: string;
-  summaryColor: string;
+  summaryColor?: string;
 }
 
 export interface DragProps {
