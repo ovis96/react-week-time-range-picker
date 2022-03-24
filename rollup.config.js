@@ -28,17 +28,7 @@ export default [
       resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
-      postcss({
-        extensions: [".less", ".css"],
-        minimize: true,
-        modules: true,
-        use: {
-          sass: null,
-          stylus: null,
-          less: { javascriptEnabled: true },
-        },
-        extract: true,
-      }),
+      postcss(),
       terser(),
     ],
     external: ["react", "react-dom"],
@@ -47,6 +37,6 @@ export default [
     input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
-    external: [/\.less$/],
+    external: [/\.(css|less|scss)$/],
   },
 ];
