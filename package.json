@@ -1,5 +1,5 @@
 {
-  "name": "@marinos33/react-week-time-range-picker",
+  "name": "@ovis96/react-week-time-range-picker",
   "version": "2.0.3",
   "description": "A React component for selecting a range of hours per day of the week",
   "main": "dist/cjs/index.js",
@@ -55,7 +55,8 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
     "style-loader": "^2.0.0",
-    "typescript": "^4.6.2"
+    "typescript": "^4.6.2",
+    "webpack-cli": "^5.1.4"
   },
   "peerDeependencies": {
     "react": "^16.10.2",
