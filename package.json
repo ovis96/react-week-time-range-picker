@@ -1,6 +1,6 @@
 {
   "name": "@ovis96/react-week-time-range-picker",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A React component for selecting a range of hours per day of the week",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
