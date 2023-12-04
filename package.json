@@ -1,6 +1,6 @@
 {
   "name": "@ovis96/react-week-time-range-picker",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "A React component for selecting a range of hours per day of the week",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -17,17 +17,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marinos33/react-week-time-range-picker.git"
+    "url": "git+https://github.com/ovis96/react-week-time-range-picker.git"
   },
   "keywords": [
     "time-range-picker"
   ],
-  "author": "marinos33",
+  "author": "ovis96",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/marinos33/react-week-time-range-picker/issues"
+    "url": "https://github.com/ovis96/react-week-time-range-picker/issues"
   },
-  "homepage": "https://github.com/marinos33/react-week-time-range-picker#readme",
+  "homepage": "https://github.com/ovis96/react-week-time-range-picker#readme",
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@rollup/plugin-commonjs": "^21.0.2",
